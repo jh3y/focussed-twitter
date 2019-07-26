@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link rel='stylesheet' href='../styles/popup.css'></link>
+    </head>
+    <body>
+      <h2>Focussed Twitter<img src='../icons/focussed_twitter_48.png'/></h2>
+      <form>
+        <ul>
+          <li>
+            <label for='opacity'>Non-focussed opacity</label>
+            <span id='opacity-value'></span>
+            <input id='opacity' type='range' step="0.01" min="0" max="1" name="opacity"/>
+          </li>
+          <li>
+            <label for='transition'>Opacity transition (s)</label>
+            <span id='transition-value'></span>
+            <input id='transition' type='range' step="0.01" min="0" max="0.75" name="transition"/>
+          </li>
+          <li>
+            <label for='fadeBack'>Remove focus delay (ms)</label>
+            <span id='fadeBack-value'></span>
+            <input id='fadeBack' type='range' step="100" min="100" max="5000" name="fadeBack"/>
+          </li>
+          <li>
+            <label for='margin'>Tweet margin (rem)</label>
+            <span id='margin-value'></span>
+            <input id='margin' type='range' step="0.5" min="0" max="10" name="margin"/>
+          </li>
+          <li>
+            <label for='sideBar'>Show sidebar?</label>
+            <input id='sideBar' type='checkbox' name="sideBar"/>
+          </li>
+          <li class='no-value'>
+            <label for='bordered'>Border tweets?</label>
+            <input id='bordered' type='checkbox' name="bordered"/>
+          </li>
+          <li class='no-value'>
+            <label for='columnBorder'>Border center column?</label>
+            <input id='columnBorder' type='checkbox' name="columnBorder"/>
+          </li>
+          <li class='no-value'>
+            <label for='dimmed'>Permanently dim sides? (except on hover)</label>
+            <input id='dimmed' type='checkbox' name="dimmed"/>
+          </li>
+        </ul>
+      </form>
+    </body>
+    <script src="../scripts/popup.js"></script>
+  </html>

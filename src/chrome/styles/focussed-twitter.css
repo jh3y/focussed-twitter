@@ -1,0 +1,57 @@
+header {
+  transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
+}
+
+[data-testid="sidebarColumn"] {
+  opacity: var(--focussed-twitter-show-sidebar);
+  transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s, clip-path calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
+  clip-path: inset(0 0 0 calc(var(--focussed-twitter-show-sidebar) * 100%));
+}
+
+header,
+[data-testid="sidebarColumn"] {
+  opacity: calc((var(--focussed-twitter-dimmed, 1) * var(--focussed-twitter-dim-sides, 1)) + var(--focussed-twitter-opacity, 0.05));
+}
+
+header:hover,
+[data-testid="sidebarColumn"]:hover {
+  opacity: 1;
+}
+
+div[data-testid='primaryColumn'],
+div[data-testid='primaryColumn'] > div > div > div:first-of-type {
+  border-left-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
+  border-right-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
+  border-top-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
+  border-bottom-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
+}
+
+div[data-testid='primaryColumn'] > div > div > div:nth-of-type(2),
+div[data-testid='primaryColumn'] section > div > div > div > div {
+  margin-bottom: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
+  transition: margin calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
+}
+
+div[data-testid='primaryColumn'] > div > div > div:nth-of-type(3) {
+  opacity: var(--focussed-twitter-tweet-border, 1);
+}
+
+div[data-testid='primaryColumn'] section > div > div > div > div article {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+[data-testid='tweet'] > div:first-of-type > div {
+  top: 0;
+  position: absolute;
+  display: block;
+  bottom: calc(var(--focussed-twitter-tweet-margin, 0) * -1rem);
+}
+
+[data-testid='tweet'] > div:first-of-type > a {
+  z-index: 2;
+}
+
+div[data-testid='primaryColumn'] section > div > div > div > div > div {
+  border-bottom-width: calc(var(--focussed-twitter-tweet-border, 0) * 1px);
+}

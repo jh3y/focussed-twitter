@@ -1,0 +1,50 @@
+body {
+  color: #fafafa;
+  background: rgb(21, 32, 43);
+  padding: 1rem;
+  width: 300px;
+}
+
+h2 {
+  margin: 0 0 1.25rem 0;
+  font-size: 1rem;
+  position: relative;
+}
+
+h2 img {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+form ul {
+  list-style-type: none;
+}
+
+span {
+  font-weight: bold;
+}
+
+li {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+input,
+label {
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-gap: 0.5rem;
+}
+
+.no-value label,
+input {
+  grid-column: 1 / -1;
+}
