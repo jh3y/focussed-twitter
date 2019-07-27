@@ -1,23 +1,30 @@
+/* Set the header opacity transition */
 header {
   transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
 }
 
+/* Sets the visibility of the side bar with trends etc. Uses this to calculate a clip-path */
 [data-testid="sidebarColumn"] {
-  opacity: var(--focussed-twitter-show-sidebar);
   transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s, clip-path calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
   clip-path: inset(0 0 0 calc(var(--focussed-twitter-show-sidebar) * 100%));
 }
 
+/*
+  Sets the opacity of the side bars based on the opacity variables.
+  Uses the permanently dimmed value to calculat the correct opacity.
+ */
 header,
 [data-testid="sidebarColumn"] {
   opacity: calc((var(--focussed-twitter-dimmed, 1) * var(--focussed-twitter-dim-sides, 1)) + var(--focussed-twitter-opacity, 0.05));
 }
 
+/* Ensures that the side bars have full opacity when hovered */
 header:hover,
 [data-testid="sidebarColumn"]:hover {
   opacity: 1;
 }
 
+/* Handles removing the bordered from the primary column */
 div[data-testid='primaryColumn'],
 div[data-testid='primaryColumn'] > div > div > div:first-of-type {
   border-left-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
@@ -26,32 +33,42 @@ div[data-testid='primaryColumn'] > div > div > div:first-of-type {
   border-bottom-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
 }
 
+/* Applies margins to tweets and the compose tweet box */
 div[data-testid='primaryColumn'] > div > div > div:nth-of-type(2),
-div[data-testid='primaryColumn'] section > div > div > div > div {
+div[data-testid='primaryColumn'] article {
+  margin-top: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
   margin-bottom: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
   transition: margin calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
 }
 
+/* Set the opacity of the block bar under the tweet composing box */
 div[data-testid='primaryColumn'] > div > div > div:nth-of-type(3) {
   opacity: var(--focussed-twitter-tweet-border, 1);
 }
 
+/*
+  Ensure that tweets allow overflow. This is so when the margins are adjusted
+  We can extend the thread line outside the tweet area.
+*/
 div[data-testid='primaryColumn'] section > div > div > div > div article {
   overflow-x: visible;
   overflow-y: visible;
 }
 
+/* This ensures the tweet thread line still joins up after adjusting the margins */
 [data-testid='tweet'] > div:first-of-type > div {
   top: 0;
   position: absolute;
   display: block;
-  bottom: calc(var(--focussed-twitter-tweet-margin, 0) * -1rem);
+  bottom: calc(var(--focussed-twitter-tweet-margin, 0) * -2rem);
 }
 
+/* Ensure that the avatar for a tweet author is above the thread line */
 [data-testid='tweet'] > div:first-of-type > a {
   z-index: 2;
 }
 
+/* Set tweet borders */
 div[data-testid='primaryColumn'] section > div > div > div > div > div {
   border-bottom-width: calc(var(--focussed-twitter-tweet-border, 0) * 1px);
 }
