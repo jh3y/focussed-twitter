@@ -55,16 +55,24 @@ div[data-testid='primaryColumn'] section > div > div > div > div article {
   overflow-y: visible;
 }
 
-/* This ensures the tweet thread line still joins up after adjusting the margins */
-[data-testid='tweet'] > div:first-of-type > div {
+/*
+  WARNING:: This is super brittle. May be removed in a later version.
+  Relying on generated classes as the DOM ordering changes.
+  For example; avatar might come first in original tweet, but second in another
+  part of the thread... Relying on generated class names is too brittle.
+
+  .r-432wen seems to target the border line for now
+  .r-13qz1uu & .r-18kxxzh seem to be used only by the avatar
+*/
+[data-testid='tweet'] .r-432wen {
   top: 0;
   position: absolute;
   display: block;
   bottom: calc(var(--focussed-twitter-tweet-margin, 0) * -2rem);
+  z-index: -1;
 }
 
-/* Ensure that the avatar for a tweet author is above the thread line */
-[data-testid='tweet'] > div:first-of-type > a {
+[data-testid='tweet'] .r-13qz1uu.r-18kxxzh {
   z-index: 2;
 }
 
