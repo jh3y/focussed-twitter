@@ -36,9 +36,9 @@ div[data-testid='primaryColumn'] > div > div > div:first-of-type {
 /* Applies margins to tweets and the compose tweet box */
 div[data-testid='primaryColumn'] > div > div > div:nth-of-type(2),
 div[data-testid='primaryColumn'] article {
-  margin-top: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
-  margin-bottom: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
-  transition: margin calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
+  padding-top: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
+  padding-bottom: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
+  transition: padding calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
 }
 
 /* Set the opacity of the block bar under the tweet composing box */
@@ -64,7 +64,7 @@ div[data-testid='primaryColumn'] section > div > div > div > div article {
   .r-432wen seems to target the border line for now
   .r-13qz1uu & .r-18kxxzh seem to be used only by the avatar
 */
-[data-testid='tweet'] .r-432wen {
+[data-testid='tweet'] .css-1dbjc4n.r-hjejmn.r-16y2uox.r-1jgb5lz.r-1g94qm0.r-432wen {
   top: 0;
   position: absolute;
   display: block;
@@ -72,7 +72,8 @@ div[data-testid='primaryColumn'] section > div > div > div > div article {
   z-index: -1;
 }
 
-[data-testid='tweet'] .r-13qz1uu.r-18kxxzh {
+[data-testid='tweet'] .css-1dbjc4n.r-1wbh5a2.r-dnmrzs,
+[data-testid='tweet'] .css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu {
   z-index: 2;
 }
 
