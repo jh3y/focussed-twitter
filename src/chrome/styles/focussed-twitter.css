@@ -4,8 +4,9 @@
 }
 
 /* Sets the visibility of the side bar with trends etc. Uses this to calculate a clip-path */
-[data-testid="sidebarColumn"] {
-  transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s, clip-path calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
+[data-testid='sidebarColumn'] {
+  transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s,
+    clip-path calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
   clip-path: inset(0 0 0 calc(var(--focussed-twitter-show-sidebar) * 100%));
 }
 
@@ -14,13 +15,16 @@
   Uses the permanently dimmed value to calculate the correct opacity.
  */
 [data-focussed-nav],
-[data-testid="sidebarColumn"] {
-  opacity: calc((var(--focussed-twitter-dimmed, 1) * var(--focussed-twitter-dim-sides, 1)) + var(--focussed-twitter-opacity, 0.05));
+[data-testid='sidebarColumn'] {
+  opacity: calc(
+    (var(--focussed-twitter-dimmed, 1) * var(--focussed-twitter-dim-sides, 1)) +
+      var(--focussed-twitter-opacity, 0.05)
+  );
 }
 
 /* Ensures that the side bars have full opacity when hovered */
 [data-focussed-nav]:hover,
-[data-testid="sidebarColumn"]:hover {
+[data-testid='sidebarColumn']:hover {
   opacity: 1;
 }
 
@@ -39,8 +43,18 @@ div[data-testid='primaryColumn'] {
 
 /* Set tweet borders */
 /* NOTE:: This is the most brittle part of the styling */
-div[data-testid='primaryColumn'] section > div > div > div > div > div {
-  border-bottom-color: rgba(47, 51, 54, var(--focussed-twitter-tweet-border, 1));
+div[data-testid='primaryColumn'] section > div > div > div > div > div,
+div[data-focussed-page-header] {
+  border-bottom-color: rgba(
+    47,
+    51,
+    54,
+    var(--focussed-twitter-tweet-border, 1)
+  );
+}
+
+div[data-focussed-page-header] {
+  border-color: rgba(47, 51, 54, var(--focussed-twitter-separator, 1));
 }
 
 [data-focussed-headerbar] {

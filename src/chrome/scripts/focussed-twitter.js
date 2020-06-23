@@ -31,6 +31,7 @@ const ATTR_MAP = {
   BOUND: 'data-focussed-composer-bound',
   HEADER: 'data-focussed-headerbar',
   TIMELINE: 'data-focussed-timeline',
+  PAGE_HEADER: 'data-focussed-page-header',
 }
 
 const updateBody = (callback) => {
@@ -161,6 +162,10 @@ class FocussedTwitter {
         ) {
           NAV.style.visibility = 'visible'
           composer.setAttribute(ATTR_MAP.BOUND, true)
+          composer.previousElementSibling.setAttribute(
+            ATTR_MAP.PAGE_HEADER,
+            true
+          )
           composer.addEventListener('click', intenseFocus(composer))
         }
 
