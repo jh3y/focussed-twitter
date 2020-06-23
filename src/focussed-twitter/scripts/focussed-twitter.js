@@ -205,15 +205,19 @@ class FocussedTwitter {
   handleFocussing() {
     if (!this.focussing) this.focus()
     if (this.removeFocusTimeout) clearTimeout(this.removeFocusTimeout)
-    this.removeFocusTimeout = setTimeout(this.unfocus, this.removeDelay)
+    this.removeFocusTimeout = setTimeout(
+      this.unfocus.bind(this),
+      this.removeDelay
+    )
     this.updating = false
   }
   handleScroll() {
+    const handleFocussing = this.handleFocussing
     // Only do anything on scroll when not perma-dimmed and not updating
     if (this.updating || this.dimmed) return
     else {
       this.updating = true
-      requestAnimationFrame(this.handleFocussing)
+      requestAnimationFrame(handleFocussing.bind(this))
     }
   }
   // Send through an update to process variables from the popup
@@ -229,8 +233,9 @@ class FocussedTwitter {
   // 1. Hook up the scroll handler for dimming the sides on scroll
   // 2. Hook into when storage values change in the popup
   bindHandlers() {
+    const handleScroll = this.handleScroll
     chrome.storage.onChanged.addListener(this.update)
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', handleScroll.bind(this))
   }
 }
 

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [0.8] - 2020-06-23
+### Changed
+- Fixed the focus on scroll feature by binding event handling to the class.
+
 ## [0.7] - 2020-06-23
 ### Changed
 - Updated separator logic to also hide border under page title.
