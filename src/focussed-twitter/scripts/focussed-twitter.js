@@ -73,22 +73,22 @@ const updateBody = (callback) => {
 }
 
 class FocussedTwitter {
-  focussing = false
-  updating = false
-  removeFocusTimeout = undefined
-  removeDelay = 0
-  sideBar = document.querySelector(EL_MAP.SIDE_BAR)
-  nav = document.querySelector(EL_MAP.NAV_CONTAINER)
-  headerBar = document.querySelector(EL_MAP.HEADER_BAR)
-  composer = document.querySelector(EL_MAP.COMPOSER)
-  column = document.querySelector(EL_MAP.COLUMN)
-  container = document.querySelector(EL_MAP.CONTAINER)
   constructor() {
+    this.focussing = false
+    this.updating = false
+    this.removeFocusTimeout = undefined
+    this.removeDelay = 0
+    this.sideBar = document.querySelector(EL_MAP.SIDE_BAR)
+    this.nav = document.querySelector(EL_MAP.NAV_CONTAINER)
+    this.headerBar = document.querySelector(EL_MAP.HEADER_BAR)
+    this.composer = document.querySelector(EL_MAP.COMPOSER)
+    this.column = document.querySelector(EL_MAP.COLUMN)
+    this.container = document.querySelector(EL_MAP.CONTAINER)
     this.setupTrueFocus()
     this.update()
     this.bindHandlers()
   }
-  setupTrueFocus = () => {
+  setupTrueFocus() {
     const NAV = this.nav
     // Nav doesn't require a MutationObserver because it's always there
     NAV.setAttribute(ATTR_MAP.NAV, true)
@@ -131,6 +131,7 @@ class FocussedTwitter {
       }
 
       // Only run this if true focus is on
+
       if (this.composeFocus) {
         this.nav.style.visibility = document.querySelector(
           EL_MAP.SIDE_BAR
@@ -166,17 +167,18 @@ class FocussedTwitter {
             ATTR_MAP.PAGE_HEADER,
             true
           )
+          this.headerBar = composer ? composer.nextElementSibling : null
+          this.timeline = this.headerBar
+            ? this.headerBar.nextElementSibling
+            : null
+          if (this.headerBar && !this.headerBar.hasAttribute(ATTR_MAP.HEADER)) {
+            this.headerBar.setAttribute(ATTR_MAP.HEADER, true)
+          }
+
+          if (this.timeline && !this.timeline.hasAttribute(ATTR_MAP.TIMELINE)) {
+            this.timeline.setAttribute(ATTR_MAP.TIMELINE, true)
+          }
           composer.addEventListener('click', intenseFocus(composer))
-        }
-
-        this.headerBar = document.querySelector(EL_MAP.HEADER_BAR)
-        this.timeline = this.headerBar?.nextElementSibling
-        if (this.headerBar && !this.headerBar.hasAttribute(ATTR_MAP.HEADER)) {
-          this.headerBar.setAttribute(ATTR_MAP.HEADER, true)
-        }
-
-        if (this.timeline && !this.timeline.hasAttribute(ATTR_MAP.TIMELINE)) {
-          this.timeline.setAttribute(ATTR_MAP.TIMELINE, true)
         }
       }
     }
@@ -188,25 +190,25 @@ class FocussedTwitter {
   }
   // A method for setting the dimming coefficient.
   // Setting to 0 means (0 * {{Dimmed sides value}}) + dimmed opacity
-  focus = () => {
+  focus() {
     this.focussing = true
     document.body.style.setProperty(VAR_MAP.DIMMED, 0)
   }
   // When we unfocus set the coefficient back to 1
-  unfocus = () => {
+  unfocus() {
     if (this.removeFocusTimeout) clearTimeout(this.removeFocusTimeout)
     if (!this.updating) {
       this.focussing = false
       document.body.style.setProperty(VAR_MAP.DIMMED, 1)
     }
   }
-  handleFocussing = () => {
+  handleFocussing() {
     if (!this.focussing) this.focus()
     if (this.removeFocusTimeout) clearTimeout(this.removeFocusTimeout)
     this.removeFocusTimeout = setTimeout(this.unfocus, this.removeDelay)
     this.updating = false
   }
-  handleScroll = () => {
+  handleScroll() {
     // Only do anything on scroll when not perma-dimmed and not updating
     if (this.updating || this.dimmed) return
     else {
@@ -217,7 +219,7 @@ class FocussedTwitter {
   // Send through an update to process variables from the popup
   // The callback is used to update class references to the popup
   // Especially useful for true focus mode
-  update = () => {
+  update() {
     updateBody(({ dimmed, fadeBack, compose }) => {
       this.dimmed = dimmed
       this.removeDelay = fadeBack
@@ -226,7 +228,7 @@ class FocussedTwitter {
   }
   // 1. Hook up the scroll handler for dimming the sides on scroll
   // 2. Hook into when storage values change in the popup
-  bindHandlers = () => {
+  bindHandlers() {
     chrome.storage.onChanged.addListener(this.update)
     window.addEventListener('scroll', this.handleScroll)
   }

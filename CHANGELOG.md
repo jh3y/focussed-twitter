@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [0.7] - 2020-06-23
 ### Changed
 - Updated separator logic to also hide border under page title.
+- Added version for Firefox
+- Updated README
+- Synced implementations into one folder
 
 ## [0.6] - 2020-06-23
 ### Added

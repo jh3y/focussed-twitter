@@ -1,7 +1,7 @@
 ![focussed twitter logo](src/chrome/icons/focussed_twitter_48.png)
 # Focussed Twitter 🐦
 
-![potential](src/screenshots/potential.png)
+![potential](src/screenshots/showing-sides.png)
 
 A browser extension for reducing the noise on Twitter 🙌
 
@@ -26,7 +26,7 @@ No need to remove elements or break the behavior/layout 👍
 
 Everything that "Focussed Twitter" does can be switched off or configured to your liking in the extension options 💪
 
-![hiding things](src/screenshots/hide-things.png)
+![focussed](src/screenshots/focussed.png)
 
 ## Features
 - Dim sides on scroll
@@ -37,6 +37,8 @@ Everything that "Focussed Twitter" does can be switched off or configured to you
 - Increase the margin between tweets
 - Permanently dim sides
 - Focussed composing
+
+![composition](src/screenshots/composing.png)
 
 ## How does it work
 `Focussed Twitter' is powered by CSS variables and MutationObserver. When an option is changed, the script updates inline CSS variables on the document.
