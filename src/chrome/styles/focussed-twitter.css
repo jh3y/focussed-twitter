@@ -1,5 +1,5 @@
 /* Set the header opacity transition */
-header {
+[data-focussed-nav] {
   transition: opacity calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
 }
 
@@ -11,73 +11,38 @@ header {
 
 /*
   Sets the opacity of the side bars based on the opacity variables.
-  Uses the permanently dimmed value to calculat the correct opacity.
+  Uses the permanently dimmed value to calculate the correct opacity.
  */
-header,
+[data-focussed-nav],
 [data-testid="sidebarColumn"] {
   opacity: calc((var(--focussed-twitter-dimmed, 1) * var(--focussed-twitter-dim-sides, 1)) + var(--focussed-twitter-opacity, 0.05));
 }
 
 /* Ensures that the side bars have full opacity when hovered */
-header:hover,
+[data-focussed-nav]:hover,
 [data-testid="sidebarColumn"]:hover {
   opacity: 1;
 }
 
-/* Handles removing the bordered from the primary column */
-div[data-testid='primaryColumn'],
-div[data-testid='primaryColumn'] > div > div > div:first-of-type {
-  border-left-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
-  border-right-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
-  border-top-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
-  border-bottom-width: calc(var(--focussed-twitter-column-border, 1) * 1px);
+div[data-testid='primaryColumn'] {
+  border-color: rgba(47, 51, 54, var(--focussed-twitter-column-border, 1));
 }
 
 /* Applies margins to tweets and the compose tweet box */
-div[data-testid='primaryColumn'] > div > div > div:nth-of-type(2),
-div[data-testid='primaryColumn'] article {
+[data-focussed-composer],
+[data-testid='primaryColumn'] article,
+[data-focussed-timeline] article {
   padding-top: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
   padding-bottom: calc(var(--focussed-twitter-tweet-margin, 0) * 1rem);
   transition: padding calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
 }
 
-/* Set the opacity of the block bar under the tweet composing box */
-div[data-testid='primaryColumn'] > div > div > div:nth-of-type(3) {
-  opacity: var(--focussed-twitter-tweet-border, 1);
-}
-
-/*
-  Ensure that tweets allow overflow. This is so when the margins are adjusted
-  We can extend the thread line outside the tweet area.
-*/
-div[data-testid='primaryColumn'] section > div > div > div > div article {
-  overflow-x: visible;
-  overflow-y: visible;
-}
-
-/*
-  WARNING:: This is super brittle. May be removed in a later version.
-  Relying on generated classes as the DOM ordering changes.
-  For example; avatar might come first in original tweet, but second in another
-  part of the thread... Relying on generated class names is too brittle.
-
-  .r-432wen seems to target the border line for now
-  .r-13qz1uu & .r-18kxxzh seem to be used only by the avatar
-*/
-[data-testid='tweet'] .css-1dbjc4n.r-hjejmn.r-16y2uox.r-1jgb5lz.r-1g94qm0.r-432wen {
-  top: 0;
-  position: absolute;
-  display: block;
-  bottom: calc(var(--focussed-twitter-tweet-margin, 0) * -2rem);
-  z-index: -1;
-}
-
-[data-testid='tweet'] .css-1dbjc4n.r-1wbh5a2.r-dnmrzs,
-[data-testid='tweet'] .css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu {
-  z-index: 2;
-}
-
 /* Set tweet borders */
+/* NOTE:: This is the most brittle part of the styling */
 div[data-testid='primaryColumn'] section > div > div > div > div > div {
-  border-bottom-width: calc(var(--focussed-twitter-tweet-border, 0) * 1px);
+  border-bottom-color: rgba(47, 51, 54, var(--focussed-twitter-tweet-border, 1));
+}
+
+[data-focussed-headerbar] {
+  opacity: var(--focussed-twitter-separator, 1);
 }

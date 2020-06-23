@@ -3,7 +3,7 @@
 const throttle = (func, limit) => {
   let lastFunc
   let lastRan
-  return function() {
+  return function () {
     const context = this
     const args = arguments
     if (!lastRan) {
@@ -11,7 +11,7 @@ const throttle = (func, limit) => {
       lastRan = Date.now()
     } else {
       clearTimeout(lastFunc)
-      lastFunc = setTimeout(function() {
+      lastFunc = setTimeout(function () {
         if (Date.now() - lastRan >= limit) {
           func.apply(context, args)
           lastRan = Date.now()
@@ -20,14 +20,16 @@ const throttle = (func, limit) => {
     }
   }
 }
-const update = throttle(e => {
+const update = throttle((e) => {
   chrome.storage.sync.set({
     [e.target.name]:
       e.target[
         e.target.name === 'sideBar' ||
         e.target.name === 'bordered' ||
         e.target.name === 'columnBorder' ||
-        e.target.name === 'dimmed'
+        e.target.name === 'dimmed' ||
+        e.target.name === 'separator' ||
+        e.target.name === 'compose'
           ? 'checked'
           : 'value'
       ],
@@ -36,7 +38,9 @@ const update = throttle(e => {
     e.target.name !== 'sideBar' &&
     e.target.name !== 'bordered' &&
     e.target.name !== 'columnBorder' &&
-    e.target.name !== 'dimmed'
+    e.target.name !== 'dimmed' &&
+    e.target.name !== 'separator' &&
+    e.target.name !== 'compose'
   ) {
     document.querySelector(`[id="${e.target.name}-value"]`).innerText =
       e.target.value
@@ -52,16 +56,30 @@ chrome.storage.sync.get(
     'margin',
     'bordered',
     'dimmed',
-    'columnBorder'
+    'columnBorder',
+    'separator',
+    'compose',
   ],
-  d => {
-    Object.keys(d).forEach(n => {
+  (d) => {
+    Object.keys(d).forEach((n) => {
       document.querySelector(`[name="${n}"]`)[
-        n === 'sideBar' || n === 'bordered' || n === 'columnBorder' || n === 'dimmed'
+        n === 'sideBar' ||
+        n === 'bordered' ||
+        n === 'columnBorder' ||
+        n === 'dimmed' ||
+        n === 'separator' ||
+        n === 'compose'
           ? 'checked'
           : 'value'
       ] = d[n]
-      if (n !== 'sideBar' && n !== 'bordered' && n !== 'columnBorder' && n !== 'dimmed') {
+      if (
+        n !== 'sideBar' &&
+        n !== 'bordered' &&
+        n !== 'columnBorder' &&
+        n !== 'dimmed' &&
+        n !== 'separator' &&
+        n !== 'compose'
+      ) {
         document.querySelector(`[id="${n}-value"]`).innerText = d[n]
       }
     })

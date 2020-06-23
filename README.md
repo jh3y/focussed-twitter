@@ -32,12 +32,14 @@ Everything that "Focussed Twitter" does can be switched off or configured to you
 - Dim sides on scroll
 - Set the dim
 - Hide the sidebar
+- Hide separators
 - Remove tweet borders
 - Increase the margin between tweets
 - Permanently dim sides
+- Focussed composing
 
 ## How does it work
-`Focussed Twitter' is powered by CSS variables. When an option is changed, the script updates inline CSS variables on the document.
+`Focussed Twitter' is powered by CSS variables and MutationObserver. When an option is changed, the script updates inline CSS variables on the document.
 These then do things like trigger opacity changes and update transition timings 🤓
 
 ![configuration](src/screenshots/configuration.png)
@@ -48,10 +50,8 @@ I'd love some! ❤️ Any PRs are welcome or suggestions.
 Ideas include:
 - Creating a better icon 😅
 - Porting to other browsers
-- Adding other configurable options (padding, hiding other things etc.)
 
-I've tried not to invest too much time in something as it's likely Twitter could make changes themselves and then updates will then be needed.
-The code is relatively minimal for a reason.
+The code is in a place where it's not too heavy. There is a reason for this. If Twitter decides to change the UI structure significantly at some point, the extension will need updating.
 
 ---
 
