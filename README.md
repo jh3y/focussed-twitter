@@ -1,4 +1,4 @@
-![focussed twitter logo](src/chrome/icons/focussed_twitter_48.png)
+![focussed twitter logo](src/focussed-twitter/icons/focussed_twitter_48.png)
 # Focussed Twitter 🐦
 
 ![potential](src/screenshots/showing-sides.png)
