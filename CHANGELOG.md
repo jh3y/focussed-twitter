@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [0.9] - 2021-03-10
+### Changed
+- Fixed Tweet borders
+- Allows hiding of Messages Dock
+- Hide Metrics for Likes, Retweets, Replies.
+- Allow mobile.twitter.com
+
 ## [0.8] - 2020-06-23
 ### Changed
 - Fixed the focus on scroll feature by binding event handling to the class.

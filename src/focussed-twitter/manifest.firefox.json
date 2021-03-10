@@ -1,13 +1,16 @@
 {
   "name": "Focussed Twitter",
-  "version": "0.8",
+  "version": "0.9",
   "short_name": "focussedtwitter",
   "description": "Let's focus on the tweets!",
   "manifest_version": 2,
   "content_scripts": [
     {
       "run_at": "document_start",
-      "matches": ["https://twitter.com/*"],
+      "matches": [
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*"
+      ],
       "css": ["styles/focussed-twitter.css"],
       "js": ["scripts/focussed-twitter.js"]
     }
@@ -19,7 +22,10 @@
   "permissions": ["declarativeContent", "storage"],
   "browser_action": {
     "default_popup": "pages/popup.html",
-    "matches": ["https://twitter.com/*"],
+    "matches": [
+      "https://twitter.com/*",
+      "https://mobile.twitter.com/*"
+    ],
     "default_icon": {
       "16": "icons/focussed_twitter_16.png",
       "32": "icons/focussed_twitter_32.png",

@@ -20,69 +20,68 @@ const throttle = (func, limit) => {
     }
   }
 }
+
+const keys = [
+  'sideBar',
+  'bordered',
+  'columnBorder',
+  'dimmed',
+  'separator',
+  'compose',
+  'dms',
+  'likes',
+  'retweets',
+  'replies',
+]
+
 const update = throttle((e) => {
   chrome.storage.sync.set({
     [e.target.name]:
-      e.target[
-        e.target.name === 'sideBar' ||
-        e.target.name === 'bordered' ||
-        e.target.name === 'columnBorder' ||
-        e.target.name === 'dimmed' ||
-        e.target.name === 'separator' ||
-        e.target.name === 'compose'
-          ? 'checked'
-          : 'value'
-      ],
+      e.target[keys.includes(e.target.name) ? 'checked' : 'value'],
   })
-  if (
-    e.target.name !== 'sideBar' &&
-    e.target.name !== 'bordered' &&
-    e.target.name !== 'columnBorder' &&
-    e.target.name !== 'dimmed' &&
-    e.target.name !== 'separator' &&
-    e.target.name !== 'compose'
-  ) {
+  if (!keys.includes(e.target.name)) {
     document.querySelector(`[id="${e.target.name}-value"]`).innerText =
       e.target.value
   }
 }, 60000 / 120)
 
-chrome.storage.sync.get(
-  [
-    'transition',
-    'opacity',
-    'fadeBack',
-    'sideBar',
-    'margin',
-    'bordered',
-    'dimmed',
-    'columnBorder',
-    'separator',
-    'compose',
-  ],
-  (d) => {
-    Object.keys(d).forEach((n) => {
-      document.querySelector(`[name="${n}"]`)[
-        n === 'sideBar' ||
-        n === 'bordered' ||
-        n === 'columnBorder' ||
-        n === 'dimmed' ||
-        n === 'separator' ||
-        n === 'compose'
-          ? 'checked'
-          : 'value'
-      ] = d[n]
-      if (
-        n !== 'sideBar' &&
-        n !== 'bordered' &&
-        n !== 'columnBorder' &&
-        n !== 'dimmed' &&
-        n !== 'separator' &&
-        n !== 'compose'
-      ) {
-        document.querySelector(`[id="${n}-value"]`).innerText = d[n]
-      }
-    })
-  }
-)
+const all = [
+  'transition',
+  'opacity',
+  'fadeBack',
+  'sideBar',
+  'margin',
+  'bordered',
+  'dimmed',
+  'columnBorder',
+  'separator',
+  'compose',
+  'likes',
+  'retweets',
+  'replies',
+  'dms',
+]
+const filtered = [
+  'sideBar',
+  'bordered',
+  'columnBorder',
+  'dimmed',
+  'separator',
+  'compose',
+  'likes',
+  'retweets',
+  'dms',
+  'replies',
+]
+chrome.storage.sync.get(all, (d) => {
+  Object.keys(d).forEach((n) => {
+    // Setting whether checked or has a specific value for a range slider
+    document.querySelector(`[name="${n}"]`)[
+      filtered.includes(n) ? 'checked' : 'value'
+    ] = d[n]
+    if (!filtered.includes(n)) {
+      document.querySelector(`[id="${n}-value"]`).innerText = d[n]
+    }
+  })
+})
 document.querySelector('form').addEventListener('input', update)

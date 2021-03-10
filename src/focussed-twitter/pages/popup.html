@@ -4,54 +4,85 @@
       <link rel='stylesheet' href='../styles/popup.css'></link>
     </head>
     <body>
-      <h2>Focussed Twitter<img src='../icons/focussed_twitter_48.png'/></h2>
+      <h2>Focussed Twitter <sup>0.9</sup><img alt="logo" src='../icons/focussed_twitter_48.png'/></h2>
       <form>
         <ul>
           <li>
-            <label for='opacity'>Non-focussed opacity</label>
+            <label for='opacity'>Non-focussed Opacity</label>
             <span id='opacity-value'></span>
             <input id='opacity' type='range' step="0.01" min="0" max="1" name="opacity"/>
           </li>
           <li>
-            <label for='transition'>Opacity transition (s)</label>
+            <label for='transition'>Opacity Transition (s)</label>
             <span id='transition-value'></span>
             <input id='transition' type='range' step="0.01" min="0" max="0.75" name="transition"/>
           </li>
           <li>
-            <label for='fadeBack'>Remove focus delay (ms)</label>
+            <label for='fadeBack'>Remove Focus Delay (ms)</label>
             <span id='fadeBack-value'></span>
             <input id='fadeBack' type='range' step="100" min="100" max="5000" name="fadeBack"/>
           </li>
           <li>
-            <label for='margin'>Tweet margin (rem)</label>
+            <label for='margin'>Tweet Margin (rem)</label>
             <span id='margin-value'></span>
             <input id='margin' type='range' step="0.5" min="0" max="10" name="margin"/>
           </li>
-          <li>
-            <label for='sideBar'>Show sidebar?</label>
-            <input id='sideBar' type='checkbox' name="sideBar"/>
-          </li>
           <li class='no-value'>
-            <label for='bordered'>Border tweets?</label>
-            <input id='bordered' type='checkbox' name="bordered"/>
-          </li>
-          <li class='no-value'>
-            <label for='columnBorder'>Border center column?</label>
-            <input id='columnBorder' type='checkbox' name="columnBorder"/>
-          </li>
-          <li class='no-value'>
-            <label for='dimmed'>Permanently dim sides? (except on hover)</label>
+            <label for='dimmed'>Permanently Dim Sides? (except on hover)</label>
             <input id='dimmed' type='checkbox' name="dimmed"/>
           </li>
           <li class='no-value'>
-            <label for='separator'>Hide seperator bars?</label>
-            <input id='separator' type='checkbox' name="separator"/>
-          </li>
-          <li class='no-value'>
-            <label for='compose'>Focussed compose?</label>
+            <label for='compose'>Focussed Compose?</label>
             <input id='compose' type='checkbox' name="compose"/>
           </li>
         </ul>
+        <details>
+          <summary>Borders</summary>
+          <ul>
+            <li class='no-value'>
+              <label for='separator'>Hide Seperator Bars?</label>
+              <input id='separator' type='checkbox' name="separator"/>
+            </li>
+            <li class='no-value'>
+              <label for='columnBorder'>Border Center Column?</label>
+              <input id='columnBorder' type='checkbox' name="columnBorder"/>
+            </li>
+            <li class='no-value'>
+              <label for='bordered'>Border Tweets?</label>
+              <input id='bordered' type='checkbox' name="bordered"/>
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>Distractions</summary>
+          <ul>
+            <li class='no-value'>
+              <label for='dms'>Hide DMs?</label>
+              <input id='dms' type='checkbox' name="dms"/>
+            </li>
+            <li>
+              <label for='sideBar'>Show Sidebar?</label>
+              <input id='sideBar' type='checkbox' name="sideBar"/>
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>Metrics</summary>
+          <ul>
+            <li class='no-value'>
+              <label for='likes'>Hide Likes?</label>
+              <input id='likes' type='checkbox' name="likes"/>
+            </li>
+            <li class='no-value'>
+              <label for='retweets'>Hide Retweets?</label>
+              <input id='retweets' type='checkbox' name="retweets"/>
+            </li>
+            <li class='no-value'>
+              <label for='replies'>Hide Replies?</label>
+              <input id='replies' type='checkbox' name="replies"/>
+            </li>
+          </ul>
+        </details>
       </form>
     </body>
     <script src="../scripts/popup.js"></script>

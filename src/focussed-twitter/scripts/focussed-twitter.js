@@ -8,6 +8,10 @@ const VAR_MAP = {
   DIM_SIDES: '--focussed-twitter-dim-sides',
   DIMMED: '--focussed-twitter-dimmed',
   SEPARATOR: '--focussed-twitter-separator',
+  RETWEETS: '--focussed-twitter-hide-retweets',
+  LIKES: '--focussed-twitter-hide-likes',
+  REPLIES: '--focussed-twitter-hide-replies',
+  DMS: '--focussed-twitter-hide-dms'
 }
 
 const EL_MAP = {
@@ -47,17 +51,26 @@ const updateBody = (callback) => {
       'dimmed',
       'separator',
       'compose',
+      'likes',
+      'retweets',
+      'replies',
+      'dms',
     ],
     (options) => {
       const {
         opacity,
         transition,
+        fadeBack,
         sideBar,
         bordered,
         columnBorder,
         margin,
         dimmed,
         separator,
+        likes,
+        retweets,
+        replies,
+        dms,
       } = options
       document.body.style.setProperty(VAR_MAP.OPACITY, opacity)
       document.body.style.setProperty(VAR_MAP.TRANSITION, transition)
@@ -67,6 +80,10 @@ const updateBody = (callback) => {
       document.body.style.setProperty(VAR_MAP.TWEET_MARGIN, margin)
       document.body.style.setProperty(VAR_MAP.DIM_SIDES, dimmed ? 0 : 1)
       document.body.style.setProperty(VAR_MAP.SEPARATOR, separator ? 0 : 1)
+      document.body.style.setProperty(VAR_MAP.LIKES, likes ? 1 : 0)
+      document.body.style.setProperty(VAR_MAP.RETWEETS, retweets ? 1 : 0)
+      document.body.style.setProperty(VAR_MAP.REPLIES, replies ? 1 : 0)
+      document.body.style.setProperty(VAR_MAP.DMS, dms ? 1 : 0)
       if (callback) callback(options)
     }
   )

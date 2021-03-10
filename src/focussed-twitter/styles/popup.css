@@ -22,6 +22,10 @@ form ul {
   list-style-type: none;
 }
 
+form > * + * {
+  margin-top: 1rem;
+}
+
 span {
   font-weight: bold;
 }
@@ -47,4 +51,14 @@ ul {
 .no-value label,
 input {
   grid-column: 1 / -1;
+}
+
+summary {
+  outline: transparent;
+  cursor: pointer;
+  padding: 1rem 0rem;
+}
+
+details > ul {
+  padding-left: 1rem;
 }

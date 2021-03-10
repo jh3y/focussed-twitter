@@ -3,12 +3,15 @@ const DEFAULTS = {
   transition: 0.2,
   fadeBack: 100,
   sideBar: false,
-  margin: 5,
   bordered: false,
-  dimmed: false,
   columnBorder: false,
+  margin: 5,
+  dimmed: false,
   separator: false,
   compose: true,
+  likes: false,
+  retweets: false,
+  dms: false,
 }
 chrome.runtime.onInstalled.addListener(function () {
   chrome.storage.sync.get(
@@ -23,9 +26,12 @@ chrome.runtime.onInstalled.addListener(function () {
       'dimmed',
       'separator',
       'compose',
+      'likes',
+      'retweets',
+      'dms',
     ],
     (options) => {
-      chrome.storage.sync.set({...DEFAULTS, ...options})
+      chrome.storage.sync.set({ ...DEFAULTS, ...options })
       chrome.declarativeContent.onPageChanged.removeRules(
         undefined,
         function () {
