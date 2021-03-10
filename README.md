@@ -6,6 +6,9 @@
 A browser extension for reducing the noise on Twitter 🙌
 _Works in Firefox and Chromium_
 
+- [Chrome Extension](https://chrome.google.com/webstore/detail/focussed-twitter/efldegaojlekkkoegoeakkgknaagjeoj)
+- [Firefox Add-On](https://addons.mozilla.org/en-US/firefox/addon/focussed-twitter/)
+
 ## Motivation
 With the new Twitter layout hitting our screens, some weren't too happy about the "noise".
 
