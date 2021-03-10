@@ -4,9 +4,10 @@
 ![potential](src/screenshots/showing-sides.png)
 
 A browser extension for reducing the noise on Twitter 🙌
+_Works in Firefox and Chromium_
 
 ## Motivation
-With the new Twitter layout hitting our screens, some aren't too happy about the "noise".
+With the new Twitter layout hitting our screens, some weren't too happy about the "noise".
 
 FWIW, I don't mind the new layout. I've almost forgotten how the old one looked now 😂
 However, the new one is a little noisy when scrolling.
@@ -37,6 +38,8 @@ Everything that "Focussed Twitter" does can be switched off or configured to you
 - Increase the margin between tweets
 - Permanently dim sides
 - Focussed composing
+- Hide metric counts
+- Hide DMs drawer
 
 ![composition](src/screenshots/composing.png)
 
@@ -51,9 +54,18 @@ I'd love some! ❤️ Any PRs are welcome or suggestions.
 
 Ideas include:
 - Creating a better icon 😅
-- Porting to other browsers
+- Porting to other browsers besides Firefox && Chrome
+- Cleaner styling for the popup window 😅
 
 The code is in a place where it's not too heavy. There is a reason for this. If Twitter decides to change the UI structure significantly at some point, the extension will need updating.
+
+## Development
+### Chrome
+- Rename `manifest.chrome.json` to `manifest.json`.
+- Load the unpacked extension into Chrome by pointing at the focussed twitter directory.
+### Firefox
+- Rename `manifest.firefox.dev.json` to `manifest.json`.
+- Load the add on into Firefox by pointing at the manifest file.
 
 ---
 
