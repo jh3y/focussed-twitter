@@ -41,9 +41,9 @@ div[data-testid='primaryColumn'] {
   transition: padding calc(var(--focussed-twitter-transition, 0.5) * 1s) ease 0s;
 }
 
-.r-gu4em3 {
+/* .r-gu4em3 {
   opacity: var(--focussed-twitter-tweet-border, 1);
-}
+} */
 
 /* Set tweet borders */
 /* NOTE:: This is the most brittle part of the styling */
@@ -64,8 +64,7 @@ div[data-focussed-page-header] {
 }
 
 /* Covers the pinned tweet too */
-[data-focussed-headerbar],
-.css-1dbjc4n.r-1adg3ll.r-1ny4l3l {
+[data-focussed-headerbar] {
   opacity: var(--focussed-twitter-separator, 1);
 }
 

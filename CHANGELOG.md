@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [0.10] - 2021-03-11
+- Remove breaking change with Tweet borders
 ## [0.9] - 2021-03-10
 ### Changed
 - Fixed Tweet borders
