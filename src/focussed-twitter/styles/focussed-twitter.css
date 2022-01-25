@@ -32,6 +32,25 @@ div[data-testid='primaryColumn'] {
   border-color: rgba(47, 51, 54, var(--focussed-twitter-column-border, 1));
 }
 
+[data-focussed-everybody-is-an-nft="true"] [data-focussed-avatar],
+[data-focussed-everybody-is-an-nft="true"] [data-focussed-avatar] * {
+  -webkit-clip-path: url("#nft-clip-path") !important;
+  clip-path: url("#nft-clip-path") !important;
+}
+
+[data-focussed-everybody-is-an-nft="false"] [data-focussed-avatar],
+[data-focussed-everybody-is-an-nft="false"] [data-focussed-avatar] * {
+  -webkit-clip-path: none !important;
+  clip-path: none !important;
+}
+
+[data-focussed-avatar],
+[data-focussed-avatar] * {
+  border-radius: calc(var(--focussed-twitter-avatar-radius, 50) * 1%) !important;
+}
+
+
+
 /* Applies margins to tweets and the compose tweet box */
 [data-focussed-composer],
 [data-testid='primaryColumn'] article,

@@ -4,7 +4,7 @@
       <link rel='stylesheet' href='../styles/popup.css'></link>
     </head>
     <body>
-      <h2>Focussed Twitter <sup>0.10</sup><img alt="logo" src='../icons/focussed_twitter_48.png'/></h2>
+      <h2>Focussed Twitter <sup>0.11</sup><img alt="logo" src='../icons/focussed_twitter_48.png'/></h2>
       <form>
         <ul>
           <li>
@@ -80,6 +80,24 @@
             <li class='no-value'>
               <label for='replies'>Hide Replies?</label>
               <input id='replies' type='checkbox' name="replies"/>
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>Experimental</summary>
+          <ul>
+            <li class='no-value'>
+              <label for='nfts'>NFTs?</label>
+              <select id='nfts' name="nfts">
+                <option value='default'>As you were</option>
+                <option value='everybody'>Everybody's an NFT</option>
+                <option value='nobody'>Nobody's an NFT</option>
+              </select>
+            </li>
+            <li>
+              <label for='avatar-radius'>Avatar Radius (%)</label>
+              <span id='avatarRadius-value'></span>
+              <input id='avatar-radius' type='range' step="1" min="0" max="50" value="50" name="avatarRadius"/>
             </li>
           </ul>
         </details>
