@@ -39,7 +39,12 @@ const update = throttle((e) => {
     [e.target.name]:
       e.target[keys.includes(e.target.name) ? 'checked' : 'value'],
   })
-  if (!keys.includes(e.target.name)) {
+
+  // Updates the value span for a value input. For example, avatarRadius && avatarRadius-value
+  if (
+    !keys.includes(e.target.name) &&
+    document.querySelector(`[id="${e.target.name}-value"]`)
+  ) {
     document.querySelector(`[id="${e.target.name}-value"]`).innerText =
       e.target.value
   }
@@ -60,6 +65,8 @@ const all = [
   'retweets',
   'replies',
   'dms',
+  'avatarRadius',
+  'nfts',
 ]
 const filtered = [
   'sideBar',
@@ -79,7 +86,7 @@ chrome.storage.sync.get(all, (d) => {
     document.querySelector(`[name="${n}"]`)[
       filtered.includes(n) ? 'checked' : 'value'
     ] = d[n]
-    if (!filtered.includes(n)) {
+    if (!filtered.includes(n) && document.querySelector(`[id="${n}-value"]`)) {
       document.querySelector(`[id="${n}-value"]`).innerText = d[n]
     }
   })
