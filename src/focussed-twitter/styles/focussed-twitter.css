@@ -68,7 +68,7 @@ div[data-testid='primaryColumn'] {
 /* NOTE:: This is the most brittle part of the styling */
 /* Often needs updating with the selector that's currently setting border-bottom-color */
 div[data-testid='primaryColumn'] section > div > div > div > div > div,
-div[data-testid='primaryColumn'] .r-1igl3o0,
+div[data-testid='primaryColumn'] .r-j5o65s,
 div[data-focussed-page-header] {
   border-bottom-color: rgba(
     47,
@@ -79,7 +79,7 @@ div[data-focussed-page-header] {
 }
 
 div[data-focussed-page-header] {
-  border-color: rgba(47, 51, 54, var(--focussed-twitter-separator, 1));
+  border-color: rgba(47, 51, 54, var(--focussed-twitter-separator, 1)) !important;
 }
 
 /* Covers the pinned tweet too */
